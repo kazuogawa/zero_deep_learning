@@ -71,5 +71,19 @@ def numerical_gradient(f, x):
     return gradient
 
 
+# 勾配降下
+# 勾配法の数式x=x - n * (∂f) / (∂x)
+# nはlearning rate. 学習率のようなパラメータはハイパーパラメータともいう
+def gradient_descent(f, init_x, learning_rate=0.01, step_num=100):
+    x = init_x
+    for i in range(step_num):
+        gradient = numerical_gradient(f, x)
+        x -= learning_rate * gradient
+
+    return x
+
+
 if __name__ == '__main__':
-    print(numerical_diff(function_tmp1, 3.0))
+    init_x = np.array([-3.0, 4.0])
+    # なんかうごかん
+    gradient_descent(function_tmp1, init_x, 0.1)
